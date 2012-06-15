@@ -1,6 +1,8 @@
 <?php
 
-// no setup required here
-// all taken care of in the au_widgets_framework
-// only thing here is views for the widget
-// start.php is required for the plugin skeleton however.
+function au_files_widget_init(){
+	elgg_unregister_widget_type("filerepo");
+	elgg_register_widget_type('filerepo', elgg_echo("file"), elgg_echo("file:widget:description"), 'profile,dashboard,groups');
+}
+
+elgg_register_event_handler("init", "system", "au_files_widget_init");
