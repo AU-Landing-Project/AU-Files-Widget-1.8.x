@@ -26,6 +26,10 @@ echo $content;
 
 if ($content) {
 	$url = "file/owner/" . elgg_get_page_owner_entity()->username;
+  if (elgg_instanceof(elgg_get_page_owner_entity(), 'group')) {
+    $url = "file/group/" . elgg_get_page_owner_entity()->guid . "/all";
+  }
+  
 	$more_link = elgg_view('output/url', array(
 		'href' => $url,
 		'text' => elgg_echo('file:more'),
